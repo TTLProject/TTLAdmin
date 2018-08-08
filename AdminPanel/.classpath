@@ -9,11 +9,11 @@
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
 	<classpathentry kind="lib" path="D:/Ammu Mudhiraj/jars/tomcat jars/jsp-api.jar"/>
 	<classpathentry kind="lib" path="D:/Ammu Mudhiraj/jars/tomcat jars/servlet-api.jar"/>
-	<classpathentry kind="lib" path="D:/Ammu Mudhiraj/jars/mail jars/activation.jar"/>
 	<classpathentry kind="lib" path="D:/Ammu Mudhiraj/jars/mail jars/javamail-1.2/imap.jar"/>
 	<classpathentry kind="lib" path="D:/Ammu Mudhiraj/jars/mail jars/javamail-1.2/mail.jar"/>
 	<classpathentry kind="lib" path="D:/Ammu Mudhiraj/jars/mail jars/javamail-1.2/mailapi.jar"/>
 	<classpathentry kind="lib" path="D:/Ammu Mudhiraj/jars/mail jars/javamail-1.2/pop3.jar"/>
 	<classpathentry kind="lib" path="D:/Ammu Mudhiraj/jars/mail jars/javamail-1.2/smtp.jar"/>
+	<classpathentry kind="lib" path="D:/Ammu Mudhiraj/jars/mail jars/javamail-1.2/activation.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

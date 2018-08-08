@@ -1,6 +1,5 @@
 
 <!DOCTYPE html>
-<%@page import="javax.swing.plaf.basic.BasicBorders.ButtonBorder"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.PreparedStatement"%>
 <%@page import="java.sql.Connection"%>
@@ -130,7 +129,6 @@ button:focus {
 	right: 1px;
 	z-index: 9999;
 }
-
 </style>
 
 <script>
@@ -188,34 +186,12 @@ div.scrollmenu a {
 div.scrollmenu a:hover {
 	background-color: #777;
 }
-
-
-.btn {
-    border-collapse: collapse;
-
-    display: inline-block;
-    margin-bottom: 0;
-    font-weight: 400;
-    text-align: center;
-    vertical-align: middle;
-    cursor: pointer;
-    background-image: none;
-    border: 1px solid transparent;
-    white-space: nowrap;
-    padding: 6x 2px; 
-     
-    font-size: 12px;
-    line-height: 1.42857143;
-    border-radius: 40px;
-}
-
-
 </style>
 </head>
 
 <body>
 
-	<section id="container" padding-right="150px">
+	<section id="container">
 		<!--header start-->
 		<header class="header fixed-top clearfix">
 			<div class="clearfix">
@@ -236,15 +212,8 @@ div.scrollmenu a:hover {
 				<h3 style="color: #fff;" align="center">
 					<b>Employee Details</b>
 				</h3>
-				<h5 align="right">
-					<a style="color: white;" href="Login.jsp"><i class="fa fa-key"></i><b>
-							Log Out</b></a>
-				</h5>
-
 
 			</div>
-
-
 
 		</header>
 
@@ -290,7 +259,7 @@ div.scrollmenu a:hover {
 						<table class="table" border="3">
 							<tr>
 								<!-- <th>Select</th> -->
-								<th>S.No</th>
+									<th>S.No</th>
 								<th>Name</th>
 								<th>EmpId</th>
 								<th>Domain</th>
@@ -302,10 +271,7 @@ div.scrollmenu a:hover {
 								<th>Mobile</th>
 								<th>Designation</th>
 								<th>delete</th>
-
-
 							</tr>
-
 
 
 							<%
@@ -313,8 +279,8 @@ div.scrollmenu a:hover {
 
 									ConnectionSteps steps = new ConnectionSteps();
 									Connection conn = steps.connection();
-									PreparedStatement pstmt = conn.prepareStatement("select * from registration where status is null");
-									
+									PreparedStatement pstmt = conn.prepareStatement("select * from registrationtable where status is null");
+								
 									ResultSet rs = pstmt.executeQuery();
 
 									int i = 0;
@@ -323,18 +289,19 @@ div.scrollmenu a:hover {
 	%>
 
 							<tr>
-								<th><%=i%></th>
-								<th><%=rs.getString("name")%></th>
-								<th><%=rs.getString("empid")%></th>
-								<th><%=rs.getString("domain")%></th>
-								<th><%=rs.getString("username")%></th>
-								<th><%=rs.getString("password")%></th>
-								<th><%=rs.getString("confirmpassword")%></th>
-								<th><%=rs.getString("emailid")%></th>
-								<th><%=rs.getString("webmail")%></th>
-								<th><%=rs.getLong("mobile")%></th>
-								<th><%=rs.getString("designation")%></th>
-								<th>
+								<td><%=i%></td>
+								<!-- <td><input type="checkbox"></td>  -->
+								<td><%=rs.getString("name")%></td>
+								<td><%=rs.getString("empid")%></td>
+								<td><%=rs.getString("domain")%></td>
+								<td><%=rs.getString("username")%></td>
+								<td><%=rs.getString("password")%></td>
+								<td><%=rs.getString("confirmpassword")%></td>
+								<td><%=rs.getString("email")%></td>
+								<td><%=rs.getString("webmail")%></td>
+								<td><%=rs.getLong("mobile")%></td>
+								<td><%=rs.getString("designation")%></td>
+								<td>
 									<!-- <button type="button" data-toggle="modal"
 											data-target="#modal-1">delete</button> -->
 
@@ -343,34 +310,40 @@ div.scrollmenu a:hover {
 										<i class="fa fa-trash-o"></i>
 									</button>
 
-									<div class="modal fade mymodal" id="modal-1" trole="dialog" align="center">
+									<div class="modal fade mymodal" id="modal-1" trole="dialog"
+										align="center">
 										<div class="modal-dialog" role="document">
-											<div class="modal-content" style="width:420px" >
-											
-												<div class="modal-body" align="center">Do you want to delete this
-													record!!!</div>
-												<div class="modal-footer" >
+											<div class="modal-content" style="width: 420px">
+
+												<div class="modal-body" align="center">Do you want to
+													delete this record!!!</div>
+												<div class="modal-footer">
 
 													<form action="PermanentDelete.jsp" method="post">
-														<input type="hidden" name="check" class="btn btn-primary btn-color btn-bg-color btn-sm col-xs-2"
+														<input type="hidden" name="check"
+															class="btn btn-primary btn-color btn-bg-color btn-sm col-xs-2"
 															value=<%=rs.getString("empid")%>> <input
 															type="submit" class="btn btn-primary pull-left"
-															value="Permanent Delete"  align="center" style="width:115px">
+															value="Permanent Delete" align="center"
+															style="width: 115px">
 
 													</form>
 
 													<form action="TemporaryDelete.jsp" method="post">
-													<input type="hidden" name="check1" class="btn btn-primary btn-color btn-bg-color btn-sm col-xs-2"
+														<input type="hidden" name="check1"
+															class="btn btn-primary btn-color btn-bg-color btn-sm col-xs-2"
 															value=<%=rs.getString("empid")%>> <input
 															type="submit" class="btn btn-primary pull-left"
-															value="Temporary Delete" align="center" style="width:115px">
+															value="Temporary Delete" align="center"
+															style="width: 115px">
 
 													</form>
-														<form action="#" method="post">
-												<input type="hidden" name="check" class="btn btn-primary btn-color btn-bg-color btn-sm col-xs-2"
+													<form action="#" method="post">
+														<input type="hidden" name="check"
+															class="btn btn-primary btn-color btn-bg-color btn-sm col-xs-2"
 															value=<%=rs.getString("empid")%>> <input
 															type="submit" class="btn btn-primary pull-left"
-															value="cancel"  style="width:115px">
+															value="cancel" style="width: 115px">
 
 													</form>
 
@@ -384,20 +357,82 @@ div.scrollmenu a:hover {
  	catch (Exception e) {
  		System.out.println(e);
  	}
- %> 
+ %> <script>
+		$(document).ready(
+				function() {
+					var $content, $modal, $apnData, $modalCon;
+					$content = $(".min");
+					$(".mdlFire").click(function(e) {
+						e.preventDefault();
+						var $id = $(this).attr("data-target");
+						$($id).modal({
+							backdrop : false,
+							keyboard : false
+						});
+					});
+
+					$(".modalMinimize").on(
+							"click",
+							function() {
+
+								$modalCon = $(this).closest(".mymodal").attr(
+										"id");
+
+								$apnData = $(this).closest(".mymodal");
+
+								$modal = "#" + $modalCon;
+
+								$(".modal-backdrop").addClass("display-none");
+
+								$($modal).toggleClass("min");
+
+								if ($($modal).hasClass("min")) {
+
+									$(".minmaxCon").append($apnData);
+
+									$(this).find("i").toggleClass('fa-minus')
+											.toggleClass('fa-clone');
+
+								} else {
+
+									$(".container").append($apnData);
+
+									$(this).find("i").toggleClass('fa-clone')
+											.toggleClass('fa-minus');
+
+								}
+								;
+
+							});
+
+					$("button[data-dismiss='modal']").click(
+							function() {
+
+								$(this).closest(".mymodal").removeClass("min");
+
+								$(".container").removeClass($apnData);
+
+								$(this).next('.modalMinimize').find("i")
+										.removeClass('fa fa-clone').addClass(
+												'fa fa-minus');
+
+							});
+
+				});
+	</script>
+
 								</td>
 
 
 							</tr>
 
+							<!-- This is our clonable table line -->
+
 						</table>
-
-
 					</div>
 
-
 					<br> <br> <br> <br> <br> <br> <br>
-					<br> <br> <br>	<br> <br> <br>	<br> <br> <br>
+					<br> <br> <br>
 					<!-- page end-->
 				</section>
 			</div>
